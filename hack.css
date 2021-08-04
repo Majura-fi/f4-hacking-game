@@ -1,0 +1,41 @@
+.monospace {
+  font-family: 'Courier New', monospace;
+}
+
+.upper-case {
+  text-transform: uppercase;
+}
+
+.line-number-container {
+  width: 7em;
+}
+
+.highlight {
+  background: greenyellow;
+}
+
+#hack-screen {
+  width: 29em;
+  column-count: 2;
+  display: inline-block;
+  height: 18em;
+  user-select: none;
+}
+
+.letter,
+.password {
+  cursor: none;
+}
+
+#history {
+  height: 18em;
+  width: 12em;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.hover {
+  background: black;
+  color: white;
+}

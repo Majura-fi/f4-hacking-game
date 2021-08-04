@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="wordlist.js"></script>
+  <script src="hack.js"></script>
+  <link rel="stylesheet" href="hack.css">
+</head>
+<body>
+  <div id="difficulty-screen">
+    Select difficulty:
+    <select id="difficulty"></select>
+    <button id="start">Start!</button>
+  </div>
+  <div id="hackable" style="display: none;">
+    <div>Attempts left: <span id="attempts-left"></span></div>
+    <div id="hack-screen" class="monospace"></div>
+    <div id="history" class="monospace upper-case"></div>
+  </div>
+  <div id="locked" style="display: none;">
+    Too many login attempts. You may try to login again after 60 minutes.
+    <button class="again-btn">Again!</button>
+  </div>
+  <div id="unlocked" style="display: none;">
+    Logged in!
+    <button class="again-btn">Again!</button>
+  </div>
+</body>
+</html>
