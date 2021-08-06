@@ -14,7 +14,7 @@
   background: greenyellow;
 }
 
-#hack-screen {
+#code-container {
   width: 29em;
   column-count: 2;
   display: inline-block;
@@ -27,7 +27,7 @@
   cursor: none;
 }
 
-#history {
+#history-container {
   height: 18em;
   width: 12em;
   display: inline-block;
@@ -38,4 +38,29 @@
 .hover {
   background: black;
   color: white;
+}
+
+#code-container,
+#history-container {
+  border: 1px solid #c8c8c8
+}
+
+#input-cursor {
+  position: relative;
+  left: -12px;
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }

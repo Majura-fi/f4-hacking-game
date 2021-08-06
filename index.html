@@ -5,27 +5,34 @@
   <title>Document</title>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
   <script src="wordlist.js"></script>
+  <script src="utils.js"></script>
   <script src="hack.js"></script>
+  <script>
+    $(() => {
+      new HackingGame('#hacking-game1', {
+        // How many attempts are allowed.
+        hackingAttempts: 5,
+
+        // How many passwords are shown on the screen.
+        // Should be less than row count, 32.
+        visiblePasswordsCount: 12,
+
+        // What is the possibility for 'tries reset' hack.
+        // If this is set to 0.05 (5%), then 'removed dud' has
+        // 0.95 (95%) chance to appear.
+        triesResetChance: 0.05,
+
+        // How long it takes to jump from game screen to 
+        // locker/unlocked screen.
+        screenSwitchDuration: 1500,
+      });
+    });
+
+  </script>
   <link rel="stylesheet" href="hack.css">
 </head>
 <body>
-  <div id="difficulty-screen">
-    Select difficulty:
-    <select id="difficulty"></select>
-    <button id="start">Start!</button>
-  </div>
-  <div id="hackable" style="display: none;">
-    <div>Attempts left: <span id="attempts-left"></span></div>
-    <div id="hack-screen" class="monospace"></div>
-    <div id="history" class="monospace upper-case"></div>
-  </div>
-  <div id="locked" style="display: none;">
-    Too many login attempts. You may try to login again after 60 minutes.
-    <button class="again-btn">Again!</button>
-  </div>
-  <div id="unlocked" style="display: none;">
-    Logged in!
-    <button class="again-btn">Again!</button>
-  </div>
+  <div id="hacking-game1"></div>
+  <div id="hacking-game2"></div>
 </body>
 </html>
