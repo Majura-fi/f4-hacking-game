@@ -22,8 +22,26 @@ The default word list is similar to that of the game. The list is collected from
 When making custom word lists, _make sure that each word list has words that all have same lengths._
 
 # Screenshots
-![photo_2021-08-05_00-18-04](https://user-images.githubusercontent.com/12672127/128261133-f4efc530-65ae-4ce6-b99a-95cfc8458033.jpg)
-![photo_2021-08-05_00-18-05](https://user-images.githubusercontent.com/12672127/128261137-c9dbca15-0e18-43f0-aba1-359602372da8.jpg)
-![photo_2021-08-05_00-18-06](https://user-images.githubusercontent.com/12672127/128261140-472a99d1-d4a5-4f4e-b7e4-a91ac1dcd631.jpg)
-![photo_2021-08-05_00-18-07](https://user-images.githubusercontent.com/12672127/128261142-e3f04073-ab32-4dac-9424-3bebd6ddfbf9.jpg)
-![photo_2021-08-05_00-18-08](https://user-images.githubusercontent.com/12672127/128261145-9e9b882d-e451-43a6-9cd6-e6a3b21e63b1.jpg)
+![image](https://user-images.githubusercontent.com/12672127/128544125-209c774b-9565-4f4e-ab25-1e381a95703b.png)
+
+Settings can be shown or use hard-coded values via options-object.
+
+![image](https://user-images.githubusercontent.com/12672127/128539522-b22f00cb-42fe-469c-8037-93b4161916ed.png)
+
+The game screen.
+
+![image](https://user-images.githubusercontent.com/12672127/128539576-1bd555bc-8d74-42c5-bf44-6de4d99d7f86.png)
+
+Input updates on mouse hover.
+
+![image](https://user-images.githubusercontent.com/12672127/128539790-9bdbc38b-d1a7-4c7b-bf6c-d4f5ca5db9bb.png)
+
+Hack code either removes a dud or resets tries.
+
+![image](https://user-images.githubusercontent.com/12672127/128539962-cb893891-0983-4ea9-80c0-03398b027241.png)
+
+Similarity scoring works like in the original game.
+
+![image](https://user-images.githubusercontent.com/12672127/128540032-64265aec-968e-4ae0-9ca2-3c4cb5730062.png)
+
+Unlock the 'terminal' when guessing the correct password, get locked out when failing five times.
