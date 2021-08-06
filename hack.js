@@ -402,8 +402,8 @@ class HackingGame {
    */
   updateHistory() {
     const html = this.history
-      .map((item) => `<span class="history-item">${item}</span>`)
-      .join('<br>');
+      .map((item) => `<div class="history-item">${item}</div>`)
+      .join('');
 
     this.gameScreen
       .find('#history')
