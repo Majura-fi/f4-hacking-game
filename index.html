@@ -11,20 +11,35 @@
     $(() => {
       new HackingGame('#hacking-game', {
         // How many attempts are allowed.
-        hackingAttempts: 5,
+        // hackingAttempts: 5,
 
         // How many passwords are shown on the screen.
         // Should be less than row count, 32.
-        visiblePasswordsCount: 12,
+        // visiblePasswordsCount: 12,
 
         // What is the possibility for 'tries reset' hack.
         // If this is set to 0.05 (5%), then 'removed dud' has
         // 0.95 (95%) chance to appear.
-        triesResetChance: 0.05,
+        // triesResetChance: 0.05,
 
         // How long it takes to jump from game screen to 
         // locker/unlocked screen.
-        screenSwitchDuration: 1500,
+        // screenSwitchDuration: 1500,
+
+        // What word list should be used.
+        // wordLength: 'random',
+
+        // Allow user to choose word length.
+        allowSetWordLength: true,
+
+        // Allow user to set hacking attempts.
+        allowSetHackingAttempts: true,
+
+        // Allow user to set visible password count.
+        allowSetVisiblePasswordCount: true,
+
+        // Allow user to set 'reset-tries' hack chance.
+        allowSetResetTriesHackChance: true,
       });
     });
   </script>

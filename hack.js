@@ -16,7 +16,13 @@ class HackingGame {
     return 15;
   }
 
-  constructor(gameContainerSelector, options) {
+  constructor(gameContainerSelector, options = {}) {
+    this.gameContainerSelector = gameContainerSelector;
+
+    this.options = options;
+
+    this.wordLength = options.wordLength || 'random';
+
     /** Max hack attempts. */
     this.maxAttempts = options.hackingAttempts || 5;
     
@@ -69,16 +75,47 @@ class HackingGame {
       throw new Error('Failed to find game container element!');
     }
 
-    this.difficultyScreen = $(`
-      <div id="difficulty-screen">
-        Select word length:
-        <select id="difficult-selection">
-          <option value="random" selected>Random</option>
-        </select>
-        <button id="start">Start!</button>
-      </div>
-    `);
+    this.difficultyScreen = $(`<div id="difficulty-screen"></div>`);
     this.container.append(this.difficultyScreen);
+
+    if (this.options.allowSetWordLength) {
+      this.difficultyScreen.append(`
+        <p>
+          Select word length:
+          <select id="difficult-selection">
+            <option value="random" selected>Random</option>
+          </select>
+        </p>
+      `);
+    }
+
+    if (this.options.allowSetHackingAttempts) {
+      this.difficultyScreen.append(`
+        <p>
+          Hacking attempts: 
+          <input id="hacking-attempts" type="number" value="5">
+        </p>
+      `);
+    }
+
+    if (this.options.allowSetVisiblePasswordCount) {
+      this.difficultyScreen.append(`
+        <p>
+          Visible passwords count:
+          <input id="visible-password-count" type="number" value="12">
+        </p>
+      `);
+    }
+
+    if (this.options.allowSetResetTriesHackChance) {
+      this.difficultyScreen.append(`
+        <p>
+          Reset-tries hack chance (%):
+          <input id="tries-reset-chance" type="number" value="5">
+        </p>
+      `);
+    }
+    this.difficultyScreen.append('<button id="start">Start!</button>');
 
     this.gameScreen = $(`
       <div id="game-screen" style="display: none;">
@@ -141,16 +178,7 @@ class HackingGame {
    * Entry function. Called when page has loaded.
    */
   init() {
-    // Get the word list by difficulty.
-    const diff = this.difficultyScreen
-      .find('#difficult-selection')
-      .val();
-
-    if (diff === 'random') {
-      this.dictionary = JSON.parse(JSON.stringify(this.chooseRandomWordList(WORD_LISTS)));
-    } else {
-      this.dictionary = JSON.parse(JSON.stringify(WORD_LISTS[diff]));
-    }
+    this.readSettingsFromUI();
 
     /** Starting line number. This will be displayed as hex value on UI. */
     let lineNro = Utils.getRandomInt(18235, 58235);
@@ -218,6 +246,31 @@ class HackingGame {
     this.correctPassword = this.possiblePasswords[passwordIndex].textContent;
 
     this.updateAttemptsLeft();
+  }
+
+
+  /**
+   * Reads settings from UI.
+   * 
+   * If cannot read values from UI, uses values from option-object. 
+   * If option-object was never given, then uses default values.
+   */
+  readSettingsFromUI() {
+    // Get the word list by difficulty.
+    this.wordLength = this.difficultyScreen.find('#difficult-selection').val() || this.wordLength;
+
+    if (this.wordLength === 'random') {
+      this.dictionary = JSON.parse(JSON.stringify(this.chooseRandomWordList(WORD_LISTS)));
+    } else {
+      this.dictionary = JSON.parse(JSON.stringify(WORD_LISTS[this.wordLength]));
+    }
+    
+    this.maxAttempts = this.difficultyScreen.find('#hacking-attempts').val() || this.maxAttempts;
+    this.attemptsLeft = this.maxAttempts;
+    this.visiblePasswordsCount = this.difficultyScreen.find('#visible-password-count').val() || this.visiblePasswordsCount;
+
+    const resetChance = this.difficultyScreen.find('#tries-reset-chance').val() / 100.0;
+    this.triesResetChance = isNaN(resetChance) ? this.triesResetChance : resetChance;
   }
 
 
